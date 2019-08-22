@@ -1,0 +1,12 @@
+Filename = read.table(file=file.choose(), #load the file by giving it a name and saying it will be a readable table. file=file.choose gives a prompt to choose a file
+                      header = T, #will there be data across the top explaing data underneath T=True
+                      sep = " ", #everthing will be seperated by a space
+                      na.strings= "`", #when there is none applicable data it wil be represented as a thing you put
+                      stringsAsFactors=F) #will explain later
+#want to draw a scatter plot to find how average effects RBI points scored a person is responsible for(using baseball data from video)
+playerData = Filename[,c("RBI","AVG")] #playerdata is a data table or data frame. inside filename is a vector
+
+png(file= "player_RBI_AVG_.png") #creating a ping file 
+plot(x=playerData$RBI, y=playerData$AVG,#the plot is based off playerdata and the $ shows which part for which axis
+     xlab="RBI", ylab="AVG", main="RBIs and average")#just creating labels and titles for plot
+dev.off()
